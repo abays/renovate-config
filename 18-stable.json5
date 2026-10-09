@@ -80,8 +80,8 @@
       "matchPackagePatterns": ["^k8s.io"],
       // We exclude kube-openapi as it has no tags
       "excludePackagePatterns": ["^k8s.io/kube-openapi"],
-      // Allow k8s.io v0.33.x for OCP 4.20
-      "allowedVersions": "< 0.34.0",
+      // Allow k8s.io v0.35.x for OCP 4.22
+      "allowedVersions": "< 0.36.0",
       "enabled": true
     },
     {
@@ -96,17 +96,17 @@
         "k8s.io/component-base"
       ],
       "matchDepTypes": ["replace"],
-      "groupName": "k8s.io 0.33.x replaces",
-      "allowedVersions": "< 0.34.0"
+      "groupName": "k8s.io 0.35.x replaces",
+      "allowedVersions": "< 0.36.0"
     },
-    // cmctl 2.4.0 has k8s api 0.34 dependencies
+    // Allow cmctl v2.4.x for OCP 4.22
     {
       "matchPackageNames": [
         "github.com/cert-manager/cmctl/v2",
       ],
       "matchDepTypes": ["replace"],
-      "groupName": "cmctl 2.3.0 replaces",
-      "allowedVersions": "< 2.4.0"
+      "groupName": "cmctl 2.4.x replaces",
+      "allowedVersions": "< 2.5.0"
     },
     // We disable kube-openapi updates as it has no tags to express a limit
     // due to other k8s.io packages. So we rely on bumping this transitively
@@ -148,8 +148,8 @@
     {
       "groupName": "sigs.k8s.io/controller-runtime",
       "matchPackagePatterns": ["^sigs.k8s.io/controller-runtime"],
-      // Allow controller-runtime v0.21.x for OCP 4.20
-      "allowedVersions": "< 0.22.0",
+      // Allow controller-runtime v0.23.x for OCP 4.22
+      "allowedVersions": "< 0.24.0",
       "enabled": true
     },
     // We need to manually select a version to bump to as there
@@ -189,8 +189,8 @@
     {
       "groupName": "network-attachment-definition-client",
       "matchPackagePatterns": ["^github.com/k8snetworkplumbingwg/network-attachment-definition-client"],
-      // OCP 4.20 use v1.7.6 https://github.com/openshift/multus-cni/blob/release-4.20/go.mod
-      "allowedVersions": "<= 1.8.0",
+      // OCP 4.22 uses v1.7.6 https://github.com/openshift/multus-cni/blob/release-4.22/go.mod
+      "allowedVersions": "< 1.8.0",
       "enabled": true
     },
     {
@@ -237,8 +237,8 @@
     {
       "groupName": "cert-manager",
       "matchPackagePatterns": ["^github.com/cert-manager/cert-manager"],
-      // Allow 1.18, cert-manager 1.19 will pull in k8s 0.34.x
-      "allowedVersions": "< 1.19.0",
+      // Allow cert-manager v1.20.x for OCP 4.22
+      "allowedVersions": "< 1.21.0",
       "enabled": true
     },
     // mschuppert - gophercloud already on v2, remove pinning
@@ -251,22 +251,22 @@
     {
       "groupName": "operator-framework-api",
       "matchPackagePatterns": ["^github.com/operator-framework/api"],
-      // Allow 0.33.0 for OCP 4.20 https://github.com/openshift/operator-framework-olm/blob/release-4.20/go.mod#L16
-      "allowedVersions": "< 0.34.0",
+      // Allow 0.42.0 for OCP 4.22 https://github.com/openshift/operator-framework-olm/blob/release-4.22/go.mod#L16
+      "allowedVersions": "< 0.43.0",
       "enabled": true
     },
     {
       "groupName": "baremetal-operator",
       "matchPackagePatterns": ["^github.com/metal3-io/baremetal-operator/apis"],
-      // mschuppert - from https://github.com/openshift/baremetal-operator/blob/release-4.20/apis/go.mod v0.11.7 on OCP 4.20, v0.12.0 pulls in k8s 0.34
-      "allowedVersions": "< 0.12.0",
+      // OCP 4.22 release branch uses v0.5.1: https://github.com/openshift/baremetal-operator/blob/release-4.22/apis/go.mod
+      "allowedVersions": "< 0.6.0",
       "enabled": true
     },
     {
       "groupName": "metallb",
       "matchPackagePatterns": ["^github.com/metallb/frr-k8s"],
-      // Allow 0.0.20 for OCP 4.20 https://github.com/openshift/metallb/blob/release-4.20/go.mod#L15
-      "allowedVersions": "< 0.0.21",
+      // Allow v0.0.22 for OCP 4.22 https://github.com/openshift/metallb/blob/release-4.22/go.mod#L15
+      "allowedVersions": "< 0.0.23",
       "enabled": true
     }
     // mschuppert - remove pinning of crypto after bump to golang 1.26, but keeping it as reference for future need
